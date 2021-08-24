@@ -10,13 +10,12 @@ import com.nepplus.viewpager_20210824.fragment.NameFragment
 class MainViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence? {
-        if (position == 0) {
-            return "인사"
-        } else if (position == 1) {
-            return "이름"
-        } else {
-            return "출생년도"
+        return when (position) {
+            0 -> "인사"
+            1 -> "이름"
+            else -> "츨생년도"
         }
+
     }
 
     override fun getCount(): Int {
@@ -26,12 +25,10 @@ class MainViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
 //        각각의 position에 어떤 Fragment가 배치되어야 하는가
-        if (position == 0) {
-            return HelloFragment()
-        } else if (position == 1) {
-            return NameFragment()
-        } else {
-            return BirthFragment()
+        return when (position) {
+            0 -> HelloFragment()
+            1 -> NameFragment()
+            else -> BirthFragment()
         }
     }
 }
